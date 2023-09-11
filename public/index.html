@@ -1,65 +1,180 @@
-<html>
-    <head>
-        <title>Index</title>
-        <style>
-            body {
-                background-color: gray;
-            }
-            .dropdown {
-                position: relative;
-                display: inline-block;
-            }
-            .dropdown-content {
-                display: none;
-                position: absolute;
-                background-color: gray;
-                min-width: 160px;
-                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            }
-            .dropdown:hover .dropdown-content {
-                display: block;
-            }
-            .dropdown-content a {
-                color: black;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-            }
-            .dropdown-content a:hover {background-color: gray}
-            .dropdown:hover .dropbtn {
-                background-color: gray;
-            }
-            .dropbtn {
-                background-color: gray;
-                color: black;
-                padding: 16px;
-                font-size: 28px;
-                border: none;
-                cursor: pointer;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="dropdown">
-            <button class="dropbtn">Projects</button>
-            <div class="dropdown-content">
-                <a href="https://therealzenald.github.io/GameDev2024Daniel/public">T1A01 Basic Web Page</a>
-                <a href="">Project 2</a>
-                <a href="">Project 3</a>
-                <a href="">Project 4</a>
-                <a href="">Project 5</a>
-                <a href="">Project 6</a>
-                <a href="">Project 7</a>
-                <a href="">Project 8</a>
-                <a href="">Project 9</a>
-                <a href="">Project 10</a>
-                <a href="">Project 11</a>
-                <a href="">Project 12</a>
-                <a href="">Project 13</a>
-                <a href="">Project 14</a>
-                <a href="">Project 15</a>
-                <a href="">Project 16</a>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Jon Dont Steal My Code You Stupid StickMan >:( -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel's Index For Game Dev</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1f1f1f;
+            color: #fff;
+        }
+        header {
+            background-color: #212121;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 42px;
+            margin: 0;
+        }
+        h2 {
+            font-size: 24px;
+            margin: 0;
+        }
+        nav {
+            background-color: #222;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            margin: 0 20px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #61dafb;
+        }
+        section {
+            padding: 40px;
+        }
+        .hero {
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 100px 0;
+            color: #fff;
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #61dafb;
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #0074b8;
+        }
+        .project {
+            background-color: #fff;
+            padding: 30px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            color: #000; /* Text color changed to black Because Dat White Was NOT It */
+        }
+        .project h3 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .project p {
+            font-size: 18px;
+            margin: 15px 0;
+        }
+        .project a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #61dafb;
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .project a:hover {
+            background-color: #0074b8;
+        }
+        .contact ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .contact li {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .contact a {
+            text-decoration: none;
+            color: #61dafb;
+        }
+        footer {
+            background-color: #212121;
+            text-align: center;
+            padding: 10px 0;
+        }
+        footer p {
+            font-size: 18px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Daniel's Index Page</h1>
+        <h2>High School Student | Aspiring Programmer | Professinal Wiggles Hater</h2>
+    </header>
+    
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    
+    <section class="hero">
+        <h1>Come Look At My Cool Things Ive Made</h1>
+        <p>Click This Button It Does Something Cool.</p>
+        <a href="#projects" class="cta-button">View Projects</a>
+    </section>
+    
+    <section id="about">
+        <div class="project">
+            <h3>About Me</h3>
+            <p>Im Daniel im a Professinal hater of jon and i mainly make games in unity.</p>
         </div>
-    </body>
+    </section>
+    
+    <section id="projects">
+        <div class="project">
+            <h3>T1A01</h3>
+            <p>Basic Webpage</p>
+            <a href="project1/index.html" class="cta-button">GO</a>
+        </div>
+        <div class="project">
+            <h3>T1A02</h3>
+            <p>PlaceHolder.</p>
+            <a href="project2/index.html" class="cta-button">GO</a>
+        </div>
+        <!-- this is where i add more of da prjects n shi-->
+    </section>
+    
+    <section id="contact" class="contact">
+        <div class="project">
+            <h3>Contact Me</h3>
+            <ul>
+                <li>Contact: <a href="https://therealzenald.github.io/GameDev2024Daniel/public/bro.html">Contact me here</a></li>
+            </ul>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2023 Big Boy Zenald</p>
+    </footer>
+</body>
 </html>
