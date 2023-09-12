@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Man Daniel's Website</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #1e1e1e;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        nav {
+            background-color: #1e1e1e;
+            padding: 10px 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            margin: 0 20px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #007bff;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 20px 0;
+            color: #007bff;
+        }
+
+        hr {
+            border: 1px solid #888;
+            margin: 20px 0;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        iframe {
+            max-width: 100%;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05); /* Scale up on hover */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+        }
+
+        button:active {
+            transform: scale(0.95); /* Scale down when clicked */
+        }
+
+        .unique-button {
+            background-color: #ff5733; /* Change the color for this button */
+            color: #fff;
+        }
+
+        .unique-button:hover {
+            background-color: #e64422; /* Change the color on hover */
+        }
+
+        .unique-button:active {
+            background-color: #c83311; /* Change the color when clicked */
+        }
+        
+        .quote {
+            font-style: italic;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        /* Unique styling for the dark theme */
+        .dark-theme {
+            background-color: #121212;
+            color: #fff;
+        }
+
+        .dark-theme a {
+            color: #007bff;
+        }
+
+        /* Gallery styles */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-gap: 20px;
+        }
+
+        .gallery a {
+            display: block;
+            text-decoration: none;
+        }
+
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery a:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+</head>
+<body class="dark-theme">
+    <header>
+        <h1>Big Man Daniel's Website</h1>
+        <nav>
+            <a href="https://therealzenald.github.io/GameDev2024Daniel/public/">Index</a>
+            <a href="https://www.google.ca/?safe=active&ssui=on">Link to Google</a>
+        </nav>
+    </header>
+    <div class="content">
+        <h1>T1A01-Web-Basics-By-Daniel.html</h1>
+        <p>Plain text <strong>Bold</strong> and <em>Italic</em> can you put them together</p>
+        <hr>
+        <!-- Gallery Section -->
+    <div class="gallery">
+        <a data-fancybox="images" href="https://raw.githubusercontent.com/TheRealZenald/GameDev2024Daniel/main/public/pics/20230326_141516.jpg">
+            <img src="https://raw.githubusercontent.com/TheRealZenald/GameDev2024Daniel/main/public/pics/20230326_141516.jpg" alt="Image 1">
+        </a>
+        <a data-fancybox="images" href="https://raw.githubusercontent.com/TheRealZenald/gamedev2022daniel/main/public/IMG_20221020_091335.jpg">
+            <img src="https://raw.githubusercontent.com/TheRealZenald/gamedev2022daniel/main/public/IMG_20221020_091335.jpg" alt="Image 2">
+        </a>
+        <a data-fancybox="images" href="https://raw.githubusercontent.com/TheRealZenald/GameDev2024Daniel/main/public/pics/20220515_023920.jpg">
+            <img src="https://raw.githubusercontent.com/TheRealZenald/GameDev2024Daniel/main/public/pics/20220515_023920.jpg" alt="Image 1">
+        </a>
+        <a data-fancybox="images" href="https://raw.githubusercontent.com/TheRealZenald/GameDev2024Daniel/main/public/pics/20220815_092240.jpg">
+            <img src="https://raw.githubusercontent.com/TheRealZenald/GameDev2024Daniel/main/public/pics/20220815_092240.jpg" alt="Image 1">
+        </a>
+        <a data-fancybox="images" href="https://raw.githubusercontent.com/TheRealZenald/GameDev2024Daniel/main/public/pics/20230329_093753.jpg">
+            <img src="https://raw.githubusercontent.com/TheRealZenald/GameDev2024Daniel/main/public/pics/20230329_093753.jpg" alt="Image 1">
+        </a>
+        <a data-fancybox="images" href="https://raw.githubusercontent.com/TheRealZenald/GameDev2024Daniel/main/public/pics/20220829_113724.jpg">
+            <img src="https://raw.githubusercontent.com/TheRealZenald/GameDev2024Daniel/main/public/pics/20220829_113724.jpg" alt="Image 1">
+        </a>
+        <!-- Add more images here -->
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("[data-fancybox='images']").fancybox({
+                animationEffect: "fade", // Customize the animation effect (e.g., "zoom-in-out")
+                transitionEffect: "slide", // Customize the transition effect (e.g., "fade")
+            });
+        });
+    </script>
+        <br><br>
+        <p>Youtube Embedded videos:</p>
+        <script>
+            $(document).ready(function () {
+                $(".carousel").slick({
+                    infinite: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    prevArrow: '<button class="slick-prev">Previous</button>',
+                    nextArrow: '<button class="slick-next">Next</button>',
+                });
+            });
+        </script>
+        <section class="video-gallery">
+            <h2>Video Gallery</h2>
+            <div class="carousel">
+                <div><iframe width="560" height="315" src="https://www.youtube.com/embed/poa_QBvtIBA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                <div><iframe width="560" height="315" src="https://www.youtube.com/embed/p_5yt5IX38I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                <div><iframe width="560" height="315" src="https://www.youtube.com/embed/zpDGJEH-4FM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                <div><iframe width="560" height="315" src="https://www.youtube.com/embed/OMdYaw3feBM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                <!-- Add more video iframes here -->
+            </div>
+        </section>
+        <hr>
+        <div>This is a div</div>
+        <span>This is a span</span>
+        <button class="unique-button" onclick="document.getElementById('myDiv01').innerHTML = 'Pseudo code is instruction that normal people can understand'">0. Pseudo Code</button>
+        <button class="unique-button" onclick="document.getElementById('myDiv01').innerHTML = 'Input/Output is exactly what it sounds like'">1. Input/Output</button>
+        <button class="unique-button" onclick="document.getElementById('myDiv01').innerHTML = 'Variables store information'">2. Variables</button>
+        <button class="unique-button" onclick="document.getElementById('myDiv01').innerHTML = 'Loops make code repeat itself after running'">3. Loops</button>
+        <button class="unique-button" onclick="document.getElementById('myDiv01').innerHTML = 'Decisions use the if statement to make true false variable decisions'">4. Decisions</button>
+        <button class="unique-button" onclick="document.getElementById('myDiv01').innerHTML = 'Functions are named chunks of code to make it easier to understand'">5. Functions</button>
+        <button class="unique-button" onclick="document.getElementById('myDiv01').innerHTML = 'Events activate code'">6. Events</button>
+        <button class="unique-button" onclick="document.getElementById('myDiv01').innerHTML = 'Arrays are <strong>numbered</strong> variables'">7. Arrays</button>
+        <button class="unique-button" onclick="document.getElementById('myDiv01').innerHTML = 'Objects are <strong>named</strong> variables'">8. Objects</button>
+        <button class="unique-button" onclick="document.getElementById('myDiv01').innerHTML = 'Groups variables and functions to make programming easier'">9. Classes</button>
+        <div id="myDiv01" class="quote">...</div>
+    </div>
+</body>
+</html>
