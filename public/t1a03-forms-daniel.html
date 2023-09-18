@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Zenald - Modern Form</title>
+</head>
+<body>
+    <header>
+        <h1>Zenald</h1>
+    </header>
+    <nav>
+        <a href="https://therealzenald.github.io/GameDev2024Daniel/public/">Back to Index</a>
+    </nav>
+    <main>
+        <section class="form-section">
+            <h2>Submit Your Information</h2>
+            <form>
+                <label for="name">Enter your name:</label>
+                <input type="text" id="name" placeholder="Ellis">
+                <p>Who told you about this? (Select all that apply.)</p>
+                <label for="company"><input type="checkbox" id="company">Company</label>
+                <label for="myself"><input type="checkbox" id="myself">Myself</label>
+                <label for="friend"><input type="checkbox" id="friend">Friend</label>
+                <p>Select a size:</p>
+                <label for="small"><input type="radio" name="size" id="small">Small</label>
+                <label for="medium"><input type="radio" name="size" id="medium">Medium</label>
+                <label for="large"><input type="radio" name="size" id="large">Large</label>
+                <label for="xlarge"><input type="radio" name="size" id="xlarge">Xtra Large</label>
+                <input type="hidden">
+                <label for="image">Upload an image:</label>
+                <input type="file">
+                <label for="number">Put a number:</label>
+                <textarea id="number" cols="60" rows="5">Number rn</textarea>
+                <button type="button" onclick="submitForm()">Submit Order</button>
+                <p>Select a color:</p>
+                <select id="color">
+                    <option value="black">Black</option>
+                    <option value="white">White</option>
+                    <option value="gray">Gray</option>
+                </select>
+                <button type="submit">Submit Form</button>
+                <button type="reset">Clear All Information</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <a href="https://therealzenald.github.io/GameDev2024Daniel/public/">Back to Index</a>
+    </footer>
+</body>
+<style>
+  /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+nav {
+    background-color: #333;
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-section {
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+</style>
+</html>
