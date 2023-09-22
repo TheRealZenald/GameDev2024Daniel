@@ -1,1 +1,85 @@
-PLACEHOLDER CODE WILL BE DONE IS VS CODE
+<html>
+<head>
+  <title>Objects by Daniel</title>
+</head>
+<body>
+  <h1>Objects by Daniel</h1>
+  <div>
+    <label for="searchInput">Search for an object:</label>
+    <input type="text" id="searchInput">
+    <button id="searchButton">Search</button>
+  </div>
+  <div id="objects"></div>
+  <script>
+    var objects = [
+      {
+        name: "Sir Ellis",
+        height: "5'10",
+        coolness: "101%"
+      },
+      {
+        name: "Jon",
+        height: "5'4",
+        coolness: "30%"
+      },
+      {
+        name: "Trey",
+        height: "6'0",
+        coolness: "95%"
+      },
+      {
+        name: "Brad",
+        height: "5'8",
+        coolness: "80%"
+      },
+      {
+        name: "Gabby",
+        height: "5'2",
+        coolness: "85%"
+      },
+      {
+        name: "Joe",
+        height: "5'3",
+        coolness: "96%"
+      },
+      {
+        name: "Hooper",
+        height: "5'3",
+        coolness: "12%"
+      },
+      {
+        name: "Jacob",
+        height: "5'5",
+        coolness: "88%"
+      },
+      {
+        name: "Mohib",
+        height: "5'11",
+        coolness: "97%"
+      }
+    ];
+    function displayObjects() {
+      var objectsDiv = document.getElementById("objects");
+      objectsDiv.innerHTML = "";
+    }
+    function searchObjects() {
+      var searchInput = document.getElementById("searchInput").value;
+      var objectsDiv = document.getElementById("objects");
+      objectsDiv.innerHTML = "";
+      for (var i = 0; i < objects.length; i++) {
+        if (objects[i].name.toLowerCase() === searchInput.toLowerCase()) {
+          var objectDiv = document.createElement("div");
+          objectDiv.innerHTML = objects[i].name + " is " + objects[i].height + " tall and is " + objects[i].coolness + " cool.";
+          objectsDiv.appendChild(objectDiv);
+          return;
+        }
+      }
+      var notFoundDiv = document.createElement("div");
+      notFoundDiv.innerHTML = "I do not know them.";
+      objectsDiv.appendChild(notFoundDiv);
+    }
+    window.addEventListener("load", displayObjects);
+    document.getElementById("searchButton").addEventListener("click", searchObjects);
+  </script>
+</body>
+</html>
