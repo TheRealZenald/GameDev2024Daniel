@@ -18,6 +18,18 @@
     input[type="button"]:hover {
       background-color: #3e8e41;
     }
+    #history {
+      height: 100px;
+      overflow-y: scroll;
+      border: 1px solid #ccc;
+      padding: 5px;
+    }
+    .expression {
+      font-weight: bold;
+    }
+    .result {
+      margin-left: 10px;
+    }
   </style>
 </head>
 <body>
@@ -45,6 +57,7 @@
     <input type="button" value="=" onclick="calculateResult()">
     <input type="button" value="/" onclick="addToResult('/')">
   </form>
+  <div id="history"></div>
   <script>
     function addToResult(value) {
       document.getElementById('result').value += value;
@@ -55,8 +68,18 @@
     }
 
     function calculateResult() {
-      var result = eval(document.getElementById('result').value);
+      var expression = document.getElementById('result').value;
+      var result = eval(expression);
       document.getElementById('result').value = result;
+      var historyDiv = document.getElementById('history');
+      var expressionDiv = document.createElement('div');
+      expressionDiv.classList.add('expression');
+      expressionDiv.textContent = expression;
+      var resultDiv = document.createElement('div');
+      resultDiv.classList.add('result');
+      resultDiv.textContent = '= ' + result;
+      historyDiv.appendChild(expressionDiv);
+      historyDiv.appendChild(resultDiv);
     }
   </script>
 </body>
