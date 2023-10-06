@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trivia Game</title>
+  <style>
+    body {
+      background-color: #222;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      text-align: center;
+    }
+    #question {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+    #answers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    button {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #3e8e41;
+    }
+    #correct-answer {
+      font-size: 1.2em;
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Trivia Game</h1>
+  <div id="question"></div>
+  <div id="answers"></div>
+  <div id="correct-answer"></div>
+  <script>
+    var answered = false;
+    
+    function getQuestion() {
+      fetch('https://opentdb.com/api.php?amount=1&type=multiple')
+        .then(response => response.json())
+        .then(data => {
+          var question = data.results[0];
+          var questionDiv = document.getElementById('question');
+          questionDiv.textContent = question.question;
+          var answersDiv = document.getElementById('answers');
+          answersDiv.innerHTML = '';
+          question.incorrect_answers.forEach(function(answer) {
+            var answerButton = document.createElement('button');
+            answerButton.textContent = answer;
+            answerButton.onclick = function() {
+              if (!answered) {
+                if (answer !== question.correct_answer) {
+                  var correctAnswerDiv = document.getElementById('correct-answer');
+                  var correctAnswerButton = document.createElement('button');
+                  correctAnswerButton.textContent = question.correct_answer;
+                  correctAnswerDiv.innerHTML = 'Correct answer: ';
+                  correctAnswerDiv.appendChild(correctAnswerButton);
+                } else {
+                  var correctAnswerDiv = document.getElementById('correct-answer');
+                  correctAnswerDiv.innerHTML = 'Correct!';
+                }
+                answered = true;
+                setTimeout(function() {
+                  answered = false;
+                  getQuestion();
+                }, 2000);
+              }
+            };
+            answersDiv.appendChild(answerButton);
+          });
+          var correctAnswerButton = document.createElement('button');
+          correctAnswerButton.textContent = question.correct_answer;
+          correctAnswerButton.onclick = function() {
+            if (!answered) {
+              var correctAnswerDiv = document.getElementById('correct-answer');
+              correctAnswerDiv.innerHTML = 'Correct!';
+              answered = true;
+              setTimeout(function() {
+                answered = false;
+                getQuestion();
+              }, 2000);
+            }
+          };
+          answersDiv.appendChild(correctAnswerButton);
+          var correctAnswerDiv = document.getElementById('correct-answer');
+          correctAnswerDiv.innerHTML = '';
+        })
+        .catch(error => {
+          console.log('Error: Could not retrieve question.');
+        });
+    }
+    
+    getQuestion();
+  </script>
+</body>
+</html>
