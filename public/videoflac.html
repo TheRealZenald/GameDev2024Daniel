@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Task</title>
+    <!-- Add links to your CSS and JavaScript files here -->
+</head>
+<body>
+    <header>
+        <h1>Random Task</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="random-task.html">Random Task</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Generate a Random Task</h2>
+            <button class="generate-button">Generate New Task</button>
+        </section>
+        <section>
+            <h2>Task</h2>
+            <p id="task"></p>
+            <p id="instructions"></p>
+        </section>
+        <section>
+            <h2>Code Editor</h2>
+            <textarea id="code"></textarea>
+            <button class="run-button">Run Code</button>
+        </section>
+        <section>
+            <h2>Code Display</h2>
+            <div class="code-display"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2021 Your Name</p>
+    </footer>
+    <script>
+        const tasks = [
+    { name: "Decisions", instruction: "Write an if statement that checks if 'x' is greater than 3. If it is, print 'x is greater than 3'. If it's not, print 'x is not greater than 3'." },
+    { name: "Variable", instruction: "Declare a variable called 'name' and assign it a string value of your name. Then, print the value of the 'name' variable to the console." },
+    { name: "Input/Output", instruction: "Write a program that prompts the user to enter their name and then prints a greeting to the console using their name." },
+    { name: "Event", instruction: "Add an event listener to a button that changes the background color of the page when clicked." },
+    { name: "Object", instruction: "Create an object called 'person' with properties for 'name', 'age', and 'gender'. Then, print the value of the 'name' property to the console." },
+    { name: "Function", instruction: "Write a function called 'add' that takes two parameters and returns their sum. Then, call the 'add' function with two numbers and print the result to the console." },
+    { name: "Loops", instruction: "Write a for loop that prints the numbers from 1 to 10 to the console." },
+    { name: "Array", instruction: "Create an array called 'fruits' with the values 'apple', 'banana', and 'orange'. Then, print the value of the second element in the array to the console." },
+    { name: "Classes", instruction: "Create a class called 'Person' with properties for 'name', 'age', and 'gender'. Then, create an instance of the 'Person' class and print the value of the 'name' property to the console." }
+];
+
+const generateButton = document.querySelector(".generate-button");
+const taskElement = document.querySelector("#task");
+const instructionsElement = document.querySelector("#instructions");
+const runButton = document.querySelector(".run-button");
+const codeElement = document.querySelector("#code");
+const codeDisplayElement = document.querySelector(".code-display");
+
+generateButton.addEventListener("click", () => {
+    const randomIndex = Math.floor(Math.random() * tasks.length);
+    const randomTask = tasks[randomIndex];
+    taskElement.textContent = randomTask.name;
+    instructionsElement.textContent = randomTask.instruction;
+});
+
+runButton.addEventListener("click", () => {
+    const code = codeElement.value;
+    codeDisplayElement.textContent = code;
+    try {
+        const consoleLog = [];
+        console.log = (message) => {
+            consoleLog.push(message);
+        };
+        eval(code);
+        if (consoleLog.length > 0) {
+            codeDisplayElement.textContent = consoleLog.join("\n");
+        }
+    } catch (error) {
+        console.error(error);
+    }
+});
+    </script>
+</body>
+</html>
