@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Daniel's CSS Page</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Raleway', sans-serif;
+      background-color: white;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      font-size: 36px;
+      color: #00aaff;
+      margin: 20px 0;
+    }
+    .dark-mode-toggle {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .dark-mode-toggle p {
+      margin-left: 10px;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .magic-button {
+      padding: 10px 20px;
+      margin: 10px;
+      background-color: #00aaff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.5s, color 0.5s, transform 0.3s;
+    }
+    .magic-button:hover {
+      background-color: #005f80;
+      transform: scale(1.05);
+    }
+    .gradient-text {
+      font-size: 24px;
+      text-align: center;
+      background: linear-gradient(to right, #4CAF50, #2196F3);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .image-section {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 50px;
+    }
+    .image {
+      opacity: 0.5;
+      transition: opacity 0.5s, box-shadow 0.3s;
+      width: 300px;
+      height: 200px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    .image:hover {
+      transform: scale(1.1);
+    }
+    .dark-mode {
+      background-color: #000;
+      color: #fff;
+    }
+    .dark-mode .magic-button {
+      background-color: #555;
+    }
+    .custom-cursor {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: url('https://raw.githubusercontent.com/TheRealZenald/gamedev2022daniel/main/public/ellis.PNG') center/cover no-repeat;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+  <h1>Daniel's CSS Page</h1>
+  <div class="dark-mode-toggle">
+    <label class="switch">
+      <input type="checkbox" id="darkModeToggle">
+      <span class="slider round"></span>
+    </label>
+    <p>Dark Mode</p>
+  </div>
+  <div class="button-container">
+    <button class="magic-button" onclick="changeColor()">Change</button>
+    <button class="magic-button" onclick="resetColor()">Reset</button>
+  </div>
+  <p class="gradient-text">This is an example of a gradient text.</p>
+  <section class="image-section">
+    <img class="image" src="https://raw.githubusercontent.com/TheRealZenald/GameDev2024Daniel/main/public/pics/Forest.jpg" alt="Forest">
+    <img class="image" src="https://raw.githubusercontent.com/TheRealZenald/GameDev2024Daniel/main/public/pics/MountBaker.jpg" alt="Mountains">
+    <img class="image" src="https://raw.githubusercontent.com/TheRealZenald/GameDev2024Daniel/main/public/pics/Van.jpg" alt="Van">
+  </section>
+  <script>
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('change', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+    const customCursor = document.createElement('div');
+    customCursor.classList.add('custom-cursor');
+    document.body.appendChild(customCursor);
+    document.addEventListener('mousemove', (e) => {
+      customCursor.style.left = `${e.pageX}px`;
+      customCursor.style.top = `${e.pageY}px`;
+    });
+  </script>
+  <script>
+    function changeColor() {
+      document.querySelectorAll(".magic-button").forEach(function(button) {
+        button.style.backgroundColor = "red";
+        button.style.color = "blue";
+      });
+    }
+    function resetColor() {
+      document.querySelectorAll(".magic-button").forEach(function(button) {
+        button.style.backgroundColor = "#008CBA";
+        button.style.color = "white";
+      });
+    }
+  </script>
+</body>
+</html>
