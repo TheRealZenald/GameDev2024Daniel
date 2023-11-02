@@ -1,10 +1,11 @@
+<!DOCTYPE html>
 <html>
   <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.12.0/brython.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.12.0/brython_stdlib.min.js"></script>
   </head>
   <body onload="brython()">
-    <textarea id="code" rows="10" cols="50">
+    <textarea id="code" rows="40" cols="100">
 class Person:
   def __init__(self, name, age):
     self.name = name
@@ -31,24 +32,35 @@ my_list = [1, 2, 3, 4, 5]
 print("List elements:", my_list)
 # Class instance
 print(f"Person1: Name - {person1.name}, Age - {person1.age}")
-
-      </textarea>
-      <br>
+    </textarea>
+    <br>
     <button id="run-button">Run</button><br>
     <div id="output"></div>
 
     <script type="text/python">
-    from browser import document, alert
+    from browser import document
 
     def run(ev):
         code = document["code"].value
         try:
+            # Redirect Python's print function to a custom function
+            result = []
+
+            def custom_print(*args):
+                text = " ".join(map(str, args))
+                result.append(text)
+
+            print = custom_print
+
             exec(code)
+
+            # Display the output on the webpage
+            output = document["output"]
+            output.text = "\n".join(result)
         except Exception as e:
-            alert(str(e))
+            document["output"].text = str(e)
 
     document["run-button"].bind("click", run)
-    document["output"] <= document["code"]
     </script>
   </body>
 </html>
