@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text RPG</title>
+    <style>
+        body {
+            background-color: #2b2b2b;
+            color: #a9b7c6;
+        }
+        #game-container {
+            width: 600px;
+            height: 400px;
+            border: 1px solid #a9b7c6;
+            margin: auto;
+            padding: 10px;
+            font-family: monospace;
+            background-color: #3c3f41;
+        }
+        #input-area {
+            width: 580px;
+            color: #a9b7c6;
+            background-color: #3c3f41;
+            border: 1px solid #a9b7c6;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div id="game-text"></div>
+        <input id="input-area" type="text" autofocus />
+    </div>
+    <div id="stats-container"></div>
+    <div id="inventory-container"></div>
+    <div id="commands-container"></div>
+
+    <script>
+        var gameText = document.getElementById('game-text');
+        var inputArea = document.getElementById('input-area');
+        var statsContainer = document.getElementById('stats-container');
+
+        function displayStats() {
+            statsContainer.innerHTML = `
+        <h2>Player Stats:</h2>
+        <ul>
+            <li>Health: ${player.health}</li>
+            <li>Weapon: ${player.weapon.name}</li>
+            <li>Attack Styles: ${Object.keys(player.weapon.attackStyles).join(', ')}</li>
+            <li>Armor: ${player.armor.name}</li>
+            <li>Defense: ${player.armor.defense}</li>
+        </ul>
+    `;
+        }
+
+        var inventoryContainer = document.getElementById('inventory-container');
+
+        function displayInventory() {
+            inventoryContainer.innerHTML = '<h2>Inventory:</h2><ul>';
+    player.inventory.forEach(function(item) {
+        inventoryContainer.innerHTML += '<li>' + item.name + '</li>';
+    });
+    inventoryContainer.innerHTML += '</ul>';
+}
+    function displayCommands() {
+        var location = locations[player.location];
+    commandsContainer.innerHTML = '<h2>Available commands:</h2>';
+
+    // Display exit commands
+    var exitsDiv = document.createElement('div');
+    exitsDiv.innerHTML = '<h3>Exits:</h3><ul>';
+    for (var exit in location.exits) {
+        exitsDiv.innerHTML += '<li>' + exit + '</li>';
+    }
+    exitsDiv.innerHTML += '</ul>';
+    commandsContainer.appendChild(exitsDiv);
+
+    // Display attack commands if there's a monster
+    if (location.monster) {
+        var attacksDiv = document.createElement('div');
+        attacksDiv.innerHTML = '<h3>Attacks:</h3><ul>';
+        for (var attackStyle in player.weapon.attackStyles) {
+            attacksDiv.innerHTML += '<li>attack ' + attackStyle + '</li>';
+        }
+        attacksDiv.innerHTML += '</ul>';
+        commandsContainer.appendChild(attacksDiv);
+    }
+}
+        var player = {
+            name: '',
+            location: 'start',
+            health: 100,
+            weapon: {
+                name: 'Dagger',
+                attackStyles: {
+                    stab: 1000000,
+                    slash: 8,
+                    throw: 5
+                }
+    },
+                    armor: {
+                        name: 'Leather',
+                        defense: 5
+                    },
+            inventory: []
+        };
+
+        var locations = {
+            start: {
+                description: 'You are in a dark room. There is a door to the north.',
+                exits: {
+                    north: 'hallway'
+                }
+            },
+            hallway: {
+                description: 'You are in a hallway. There is a room to the south, and a room to the north.',
+                exits: {
+                    south: 'start',
+                    north: 'closet'
+                }
+            },
+            closet: {
+                description: 'You are in a closet and see a Romanian, Better leave him alone.',
+                exits: {
+                    south: 'hallway'
+                },
+                monster: {
+                    name: 'Romanian',
+                    health: 50,
+                    attack: 5,
+                    drop: {
+                        name: 'Sword',
+                        attackStyles: {
+                            swing: 15,
+                            thrust: 12,
+                            parry: 10
+                        }
+                    }
+                }
+             }
+
+        };
+
+        function displayLocation() {
+            var location = locations[player.location];
+            gameText.textContent = location.description;
+        }
+
+        inputArea.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        var command = event.target.value.split(' ');
+        var action = command[0];
+        var target = command[1];
+
+        event.target.value = '';
+
+        var location = locations[player.location];
+        if (action in location.exits) {
+            player.location = location.exits[action];
+            displayLocation();
+            displayCommands();
+        } if (action === 'attack' && target in player.weapon.attackStyles) {
+    if (location.monster) {
+        if (location.monster.health) {
+            location.monster.health -= player.weapon.attackStyles[target];
+            if (location.monster.health <= 0) {
+                gameText.textContent += '\nYou have defeated the ' + location.monster.name + '!';
+                player.inventory.push(location.monster.drop);
+                gameText.textContent += '\nYou found a ' + location.monster.drop.name + '!';
+                delete location.monster;
+                displayInventory();
+            } else {
+                gameText.textContent += '\nYou attack the ' + location.monster.name + '. It has ' + location.monster.health + ' health remaining.';
+                player.health -= location.monster.attack;
+                if (player.health <= 0) {
+                    gameText.textContent += '\nThe ' + location.monster.name + ' has defeated you. Game over.';
+                    // End the game
+                } else {
+                    gameText.textContent += '\nThe ' + location.monster.name + ' attacks you. You have ' + player.health + ' health remaining.';
+                }
+            }
+        } else {
+            gameText.textContent += '\nThe monster is already defeated.';
+        }
+    } else {
+        gameText.textContent += '\nThere is nothing to attack.';
+    }
+} else {
+    gameText.textContent += '\nInvalid command.';
+}
+    }
+});
+
+        displayLocation();
+        displayStats();
+    </script>
+</body>
+</html>
