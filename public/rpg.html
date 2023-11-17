@@ -60,8 +60,9 @@
     });
     inventoryContainer.innerHTML += '</ul>';
 }
-    function displayCommands() {
-        var location = locations[player.location];
+function displayCommands() {
+    var commandsContainer = document.getElementById('commands-container');
+    var location = locations[player.location];
     commandsContainer.innerHTML = '<h2>Available commands:</h2>';
 
     // Display exit commands
@@ -105,16 +106,48 @@
 
         var locations = {
             start: {
-                description: 'You are in a dark room. There is a door to the north.',
+                description: 'You are in a dark room. There is a door to the north that seems to lead to a hallway.',
                 exits: {
-                    north: 'hallway'
+                    hallway: 'hallway'
                 }
             },
             hallway: {
-                description: 'You are in a hallway. There is a room to the south, and a room to the north.',
+                description: 'You are in a hallway. the door to the start is behind you, and a Closet in at the end of the hallway, and a bedroom to the left of you.',
                 exits: {
-                    south: 'start',
-                    north: 'closet'
+                    start: 'start',
+                    closet: 'closet',
+                    bedroom: 'bedroom',
+                },
+            },
+            bedroom: {
+                description: 'you have enter a bedroom and see a bed and a closet.',
+                exits: {
+                    hallway: 'hallway',
+                    bed: 'bed',
+                    closet: 'bedroomcloset'
+                }
+            },
+            bed: {
+                description: 'its a bed.',
+                exits: {
+                    bedroom: 'bedroom',
+                }
+            },
+            bedroomcloset: {
+                description: 'you have enter the bedroom closet and see a man who kind of reminds you of a man named jon he has stupid pointy hair.',
+                exits: {
+                    bedroom: 'bedroom',
+                },
+                monster: {
+                    name: 'Jon',
+                    health: 1,
+                    attack: 1,
+                    drop: {
+                        name: 'hair gell',
+                        attackStyles: {
+                            swing: 1,
+                        }
+                    }
                 }
             },
             closet: {
@@ -136,7 +169,7 @@
                     }
                 }
              }
-
+            
         };
 
         function displayLocation() {
