@@ -1,0 +1,21 @@
+<html>
+<head>
+    <h1>Daniel fun test 2</h1>
+</head>
+<body>
+    <button onClick="myFunction()">Click Me</button>
+    <script>
+        var myArray = ["Jon", "Ellis", "Fred"];
+        function myFunction() { 
+            for (var i = 0; i < myArray.length; i++) {
+                if (myArray[i] == "Fred") {
+                    document.getElementById("myDiv01").innerHTML += "Fred" + "<br>" + "Wow" + "<br>";
+                } else {
+                    document.getElementById("myDiv01").innerHTML += myArray[i] + "<br>";
+                }
+            }
+        }
+    </script>
+    <div id="myDiv01"></div>
+</body> 
+</html>
