@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>t2a11 Game Template by Dan</title>
+    <style>
+        body {
+            background-repeat: repeat;
+            background-size: 80%;
+            background-color: tan;
+            color: #ffffff;
+            margin: 0; /* Remove default margin */
+            overflow: hidden; /* Prevent scrollbars */
+        }
+
+        .game-container {
+            position: relative;
+        }
+
+        .game-element {
+            position: absolute;
+            width: 100px;
+            height: 80px;
+            border: 5px solid blue;
+            transition: transform 0.2s ease-in-out; /* Add smooth movement transition */
+        }
+
+        #myImg02 {
+            left: 250px;
+            border: 5px solid red;
+        }
+
+        #myImg03 {
+            left: 500px;
+            border: 5px solid green;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        button {
+            display: block;
+            margin: 10px auto;
+            /* Add button styles here */
+        }
+    </style>
+</head>
+<body id="myBody">
+
+<h6> Version 0.0.1 </h6>
+<h1>t2a11 Game Template by Dan</h1>
+<br><br><br><br>
+
+<div class="game-container">
+    <div id="myImg01" class="game-element" style="top: 0; left: 50px;">
+        <img src="https://raw.githubusercontent.com/TheRealZenald/gamedev2022daniel/main/public/IMG_20221020_091335.jpg" alt="Player">
+    </div>
+    <div id="myImg02" class="game-element" style="top: 0; left: 250px;">
+        <img src="https://raw.githubusercontent.com/TheRealZenald/gamedev2022daniel/main/public/ellis.PNG" alt="Enemy1">
+    </div>
+    <div id="myImg03" class="game-element" style="top: 0; left: 500px;">
+        <img src="https://raw.githubusercontent.com/TheRealZenald/gamedev2022daniel/main/public/20221017_143150.jpg" alt="Enemy2">
+    </div>
+</div>
+
+<button id="startButton">Auto Background Left</button>
+<button id="moveRightButton">Move Right</button>
+<button id="moveDownButton">Move Down</button>
+<button id="moveUpButton">Move Up</button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const myImg01 = document.getElementById('myImg01');
+        const startButton = document.getElementById('startButton');
+        const moveRightButton = document.getElementById('moveRightButton');
+        const moveDownButton = document.getElementById('moveDownButton');
+        const moveUpButton = document.getElementById('moveUpButton');
+
+        let myGlobalX = 0;
+        let myClock;
+
+        function moveElement(element, offsetX, offsetY) {
+            const currentLeft = parseInt(element.style.left) || 0;
+            const currentTop = parseInt(element.style.top) || 0;
+            element.style.left = currentLeft + offsetX + 'px';
+            element.style.top = currentTop + offsetY + 'px';
+        }
+
+        function startAutoBackgroundLeft() {
+            clearInterval(myClock);
+            myClock = setInterval(() => {
+                myGlobalX -= 5;
+                document.getElementById('myBody').style.backgroundPosition = `${myGlobalX}px 0px`;
+            }, 100);
+        }
+
+        function stopAutoBackgroundLeft() {
+            clearInterval(myClock);
+        }
+
+        function handleButtonClick(button, offsetX, offsetY) {
+            button.addEventListener('click', () => {
+                moveElement(myImg01, offsetX, offsetY);
+                checkCollisions();
+            });
+        }
+
+        function checkCollisions() {
+            // Your collision detection logic here
+        }
+
+        startButton.addEventListener('click', startAutoBackgroundLeft);
+        moveRightButton.addEventListener('click', () => handleButtonClick(moveRightButton, 10, 0));
+        moveDownButton.addEventListener('click', () => handleButtonClick(moveDownButton, 0, 10));
+        moveUpButton.addEventListener('click', () => handleButtonClick(moveUpButton, 0, -10));
+    });
+</script>
+
+</body>
+</html>
