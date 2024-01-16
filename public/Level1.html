@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>t2a11 Game Template by Dan</title>
+    <style>
+        body {
+            background-color: tan;
+            color: #ffffff;
+            background-repeat: repeat;
+            background-size: 80%;
+            background-image: url('myBackground01.jpg');
+            width: 100vw; /* Set explicit width for the body */
+            height: 100vh; /* Set explicit height for the body */
+            margin: 0; /* Remove default margin */
+        }
+
+        #myImg01 {
+            position: absolute;
+            width: 100px;
+            height: 80px;
+            top: 50px;
+            left: 50px;
+            border: 5px solid blue;
+            z-index: 1; /* Ensure the image is on top */
+        }
+
+        #myImg02 {
+            position: absolute;
+            width: 100px;
+            height: 80px;
+            border: 5px solid red;
+            z-index: 1; /* Ensure the image is on top */
+        }
+
+        #myImg03 {
+            position: absolute;
+            width: 100px;
+            height: 80px;
+            border: 5px solid green;
+            z-index: 1; /* Ensure the image is on top */
+        }
+    </style>
+</head>
+<body id="myBody">
+
+    <h1 align="center">t2a11 Game Template by Dan</h1>
+    <br><br><br><br>
+
+    <script>
+        let myGlobalX = 50;
+        let myGlobalY = 50;
+
+        document.addEventListener('keydown', function(event) {
+            switch (event.key.toLowerCase()) {
+                case 'w':
+                    myGlobalY -= 10;
+                    break;
+                case 'a':
+                    myGlobalX -= 10;
+                    break;
+                case 's':
+                    myGlobalY += 10;
+                    break;
+                case 'd':
+                    myGlobalX += 10;
+                    break;
+            }
+            document.getElementById('myImg01').style.top = myGlobalY + 'px';
+            document.getElementById('myImg01').style.left = myGlobalX + 'px';
+            myCheckHit(); // checks for all collisions
+        });
+
+        function myCheckHit() {
+            const rect1 = document.getElementById('myImg01').getBoundingClientRect();
+            const rect2 = document.getElementById('myImg02').getBoundingClientRect();
+            const rect3 = document.getElementById('myImg03').getBoundingClientRect();
+
+            if (
+                rect1.top < rect3.bottom &&
+                rect1.bottom > rect3.top &&
+                rect1.left < rect3.right &&
+                rect1.right > rect3.left
+            ) {
+                console.log('You win!');
+                alert('Congratulations! You win!');
+                location = 'https://therealzenald.github.io/GameDev2024Daniel/public/blackjack/BlackJack.html'  // go to your next level
+            }
+            if (
+                rect1.top < rect2.bottom &&
+                rect1.bottom > rect2.top &&
+                rect1.left < rect2.right &&
+                rect1.right > rect2.left
+            ) {
+                console.log('You Lose');
+                alert('Congratulations! You lose');
+                // You can add further actions for winning here
+            }
+        }
+
+        // Set initial random positions for 'myImg02' and 'myImg03'
+        document.addEventListener('DOMContentLoaded', function() {
+            randomizeObstaclePosition('myImg02');
+            randomizeObstaclePosition('myImg03');
+        });
+
+        function randomizeObstaclePosition(elementId) {
+            const randomX = Math.floor(Math.random() * (window.innerWidth - 100));
+            const randomY = Math.floor(Math.random() * (window.innerHeight - 80));
+            document.getElementById(elementId).style.left = randomX + 'px';
+            document.getElementById(elementId).style.top = randomY + 'px';
+        }
+    </script>
+
+    <img id="myImg01" src="https://raw.githubusercontent.com/TheRealZenald/gamedev2022daniel/main/public/IMG_20221020_091335.jpg">
+    <img id="myImg02" src="https://raw.githubusercontent.com/TheRealZenald/gamedev2022daniel/main/public/ellis.PNG">
+    <img id="myImg03" src="https://raw.githubusercontent.com/TheRealZenald/gamedev2022daniel/main/public/20221017_143150.jpg">
+
+</body>
+</html>
